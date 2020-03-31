@@ -1,14 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
+<script>
+import lax from "lax.js";
+
+export default {
+  created() {
+    lax.setup();
+
+    document.addEventListener(
+      "scroll",
+      function() {
+        lax.update(window.scrollY);
+      },
+      false
+    );
+  }
+};
+</script>
+
 <style>
+body {
+  padding: 20px;
+  height: 200vh;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
