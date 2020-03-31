@@ -19,3 +19,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# private config files
+/src/firebaseConfig.js
+vue.config.js
