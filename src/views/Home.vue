@@ -21,11 +21,23 @@
     <section class="section container" id="info">
       <div id="title">
         <h1>Messages sent through the cloud. Literally.</h1>
-        <p>You've heard of software as a service. Now it's time for pigeons as a service. Communication has never been more contrived.</p>
+        <p>
+          You've heard of software as a service. Now it's time for pigeons as a
+          service. Communication has never been more contrived.
+        </p>
         <br />
         <h2>Putting the long back in long distance communication</h2>
-        <p>With Pigeon Post, your messages will take 3-7 days to safely and securely arrive. With the latest innovation in bird tech, we are able to deliver messages up to 75g(2.5oz) anywhere around the while, all while remaining completely immune to cyber attacks</p>
-        <p>Inspired by Cher Ami, a homing pigeon awarded the French Croix de guerre for her heroic service in WWI, our pigeons operate around the clock, 24/7</p>
+        <p>
+          With Pigeon Post, your messages will take 3-7 days to safely and
+          securely arrive. With the latest innovation in bird tech, we are able
+          to deliver messages up to 75g(2.5oz) anywhere around the while, all
+          while remaining completely immune to cyber attacks
+        </p>
+        <p>
+          Inspired by Cher Ami, a homing pigeon awarded the French Croix de
+          guerre for her heroic service in WWI, our pigeons operate around the
+          clock, 24/7
+        </p>
       </div>
     </section>
     <section class="section" id="section2">

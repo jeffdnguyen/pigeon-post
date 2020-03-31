@@ -29,7 +29,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #191818;
   background-color: #f3f4f5;
 }
 
