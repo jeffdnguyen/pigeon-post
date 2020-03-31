@@ -20,6 +20,9 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# private config files
+# Private config files
 /src/firebaseConfig.js
 vue.config.js
+
+# Deploy to GitPages script
+deployGitPages.sh
