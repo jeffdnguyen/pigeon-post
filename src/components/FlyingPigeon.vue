@@ -1,5 +1,9 @@
 <template>
-  <div class="lax pigeon-flying" data-lax-preset="speedy">PIGEON</div>
+  <img
+    class="lax pigeon-flying"
+    data-lax-preset="leftToRight fadeInOut"
+    src="../assets/orange_pigeon.png"
+  />
 </template>
 
 <script>
@@ -14,7 +18,8 @@ export default {
 
 <style>
 .pigeon-flying {
-  background-color: orange;
   position: absolute;
+  height: 100pt;
+  width: 100pt;
 }
 </style>

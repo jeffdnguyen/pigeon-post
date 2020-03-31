@@ -27,16 +27,17 @@ export default {
 <style>
 body {
   margin: 0;
-  padding: 50px;
+  padding: 0;
+  height: 100%;
   background-color: #191818;
   background-color: #f3f4f5;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Monserrat", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
+  overflow-x: hidden;
   color: #191818;
 }
 </style>
