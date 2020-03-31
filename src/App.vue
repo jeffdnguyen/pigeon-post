@@ -18,34 +18,25 @@ export default {
       },
       false
     );
+
+    document.add;
   }
 };
 </script>
 
 <style>
 body {
-  padding: 20px;
-  height: 200vh;
+  margin: 0;
+  padding: 50px;
+  background-color: #191818;
+  background-color: #f3f4f5;
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  /* text-align: center; */
+  color: #191818;
 }
 </style>
