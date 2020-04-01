@@ -1,0 +1,70 @@
+<template>
+  <header>
+    <section>
+      <div class="col1">
+        <router-link to="dashboard"
+          ><img id="logo" src="../assets/orange_pigeon.png"
+        /></router-link>
+        <ul class="links">
+          <li><router-link to="dashboard">Home</router-link></li>
+          <li><router-link to="profile">Profile</router-link></li>
+          <li><a @click="logout">Log out</a></li>
+        </ul>
+      </div>
+    </section>
+  </header>
+</template>
+
+<script>
+const fb = require("../firebaseConfig.js");
+
+export default {
+  methods: {
+    logout() {
+      fb.auth
+        .signOut()
+        .then(() => {
+          this.$store.dispatch("clearData");
+          this.$router.push("login");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.col1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  // background-color: red;
+  width: 150pt;
+  #logo {
+    width: 75pt;
+    height: 75pt;
+  }
+
+  ul {
+    list-style: none;
+    li {
+      margin: 5pt 5pt 20pt 0pt;
+    }
+  }
+
+  .links {
+    font-weight: bold;
+    font-size: 15pt;
+    list-style: none;
+    li {
+      margin: 5pt 5pt 20pt 0pt;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+</style>
