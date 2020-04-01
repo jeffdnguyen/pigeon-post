@@ -48,10 +48,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   color: #191818;
-
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 150pt;
 }
 /* Media query: Mobile devices (Using iPhone X as the standard) */
 @media only screen and (max-device-width: 812px) {

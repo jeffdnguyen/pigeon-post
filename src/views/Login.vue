@@ -263,6 +263,8 @@ export default {
   height: 50vh;
   width: 30vw;
 
+  font-size: 16px;
+
   background-color: #f3f4f5;
   box-shadow: 3px 6px 10px 0px rgb(128, 80, 18);
   border-radius: 28px;

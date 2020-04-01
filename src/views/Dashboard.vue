@@ -43,13 +43,22 @@ export default {
 <style lang="scss">
 #dashboard {
   margin: 0;
+  margin-left: 150pt;
   padding: 0;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 
   border-left: solid 1pt #ccc;
+}
+
+/* Media query: Mobile devices (Using iPhone X as the standard) */
+@media only screen and (max-device-width: 812px) {
+  #dashboard {
+    margin-left: 0pt;
+    align-items: center;
+  }
 }
 </style>
