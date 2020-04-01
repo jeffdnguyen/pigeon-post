@@ -31,6 +31,14 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: lazyLoad("Profile"),
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 

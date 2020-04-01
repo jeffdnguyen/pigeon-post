@@ -1,13 +1,23 @@
 <template>
   <div id="app">
+    <Navigation v-if="currentUser"></Navigation>
     <router-view />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import Navigation from "@/components/Navigation.vue";
+
 import lax from "lax.js";
 
 export default {
+  components: {
+    Navigation
+  },
+  computed: {
+    ...mapState(["currentUser"])
+  },
   created() {
     lax.setup();
 
@@ -38,5 +48,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   color: #191818;
+
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 150pt;
+}
+/* Media query: Mobile devices (Using iPhone X as the standard) */
+@media only screen and (max-device-width: 812px) {
+  #app {
+    flex-direction: column;
+    margin-left: 0pt;
+  }
 }
 </style>

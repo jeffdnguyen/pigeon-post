@@ -9,6 +9,23 @@ fb.auth.onAuthStateChanged(user => {
   if (user) {
     store.commit("setCurrentUser", user);
     store.dispatch("fetchUserProfile");
+
+    // UPDATE USER PROFILE
+    // fb.usersCollections.doc(user.uid).onSnapshot(doc => {
+    //   store.commit('setUserProfile', doc.data())
+    // })
+
+    fb.postsCollections.orderBy("createdOn", "desc").onSnapshot(snapshot => {
+      let postsArray = [];
+
+      snapshot.forEach(doc => {
+        let post = doc.data();
+        post.id = doc.id;
+        postsArray.push(post);
+      });
+
+      store.commit("setPosts", postsArray);
+    });
   }
 });
 
