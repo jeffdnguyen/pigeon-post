@@ -28,6 +28,11 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    // Filter by UID
+    filterByOwner: {
+      type: String,
+      required: false
     }
   },
   filters: {

@@ -22,13 +22,7 @@
             <div class="option"></div>
             <div class="option"></div>-->
           </div>
-          <button
-            @click="createPost"
-            :disabled="post.content == ''"
-            class="button"
-          >
-            Post
-          </button>
+          <button @click="createPost" :disabled="post.content == ''" class="button">Post</button>
         </div>
       </div>
     </form>

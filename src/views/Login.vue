@@ -12,12 +12,7 @@
             <h1>Pigeon Post</h1>
             <img src="../assets/orange_pigeon.png" />
           </div>
-          <input
-            v-model.trim="loginForm.email"
-            type="text"
-            placeholder="email"
-            id="email1"
-          />
+          <input v-model.trim="loginForm.email" type="text" placeholder="email" id="email1" />
           <input
             v-model.trim="loginForm.password"
             type="password"
@@ -26,29 +21,19 @@
           />
           <button @click="login" class="button">LOGIN</button>
           <div class="extras">
-            <a @click="togglePasswordReset"
-              ><span class="gray-text">Forgot Your Password? </span> Reset
-              Password</a
-            >
-            <a @click="toggleForm"
-              ><span class="gray-text">Not Registered? </span>Sign Up</a
-            >
+            <a @click="togglePasswordReset">
+              <span class="gray-text">Forgot Your Password?</span> Reset
+              Password
+            </a>
+            <a @click="toggleForm">
+              <span class="gray-text">Not Registered?</span>Sign Up
+            </a>
           </div>
         </form>
         <form v-else-if="!showLoginForm && !showForgotPassword" @submit.prevent>
           <h1>Get Started</h1>
-          <input
-            v-model.trim="signupForm.name"
-            type="text"
-            placeholder="name"
-            id="name"
-          />
-          <input
-            v-model.trim="signupForm.email"
-            type="text"
-            placeholder="email"
-            id="email2"
-          />
+          <input v-model.trim="signupForm.name" type="text" placeholder="name" id="name" />
+          <input v-model.trim="signupForm.email" type="text" placeholder="email" id="email2" />
           <input
             v-model.trim="signupForm.password"
             type="password"
@@ -57,20 +42,15 @@
           />
           <button @click="signup" class="button">Sign Up</button>
           <div class="extras">
-            <a @click="toggleForm"
-              ><span class="gray-text">Already Registered? </span>Log In</a
-            >
+            <a @click="toggleForm">
+              <span class="gray-text">Already Registered?</span>Log In
+            </a>
           </div>
         </form>
         <form v-else @submit.prevent>
           <div v-if="!passwordResetSuccess" class="password-form">
             <h1>Reset Password</h1>
-            <input
-              v-model.trim="passwordForm.email"
-              type="text"
-              placeholder="email"
-              id="email3"
-            />
+            <input v-model.trim="passwordForm.email" type="text" placeholder="email" id="email3" />
             <button @click="resetPassword" class="button">Submit</button>
             <div class="extras">
               <a @click="togglePasswordReset">Back to Log In</a>
@@ -79,9 +59,7 @@
           <div v-else class="password-form">
             <h1>Email Sent</h1>
             <p>Check your email for a link to reset your password</p>
-            <button @click="togglePasswordReset" class="button">
-              Back to Log In
-            </button>
+            <button @click="togglePasswordReset" class="button">Back to Log In</button>
           </div>
         </form>
         <transition name="fade">
@@ -166,7 +144,11 @@ export default {
           fb.usersCollections
             .doc(user.user.uid)
             .set({
-              name: this.signupForm.name
+              name: this.signupForm.name,
+              bio: "",
+              createdOn: new Date(),
+              following: 0,
+              followers: 0
             })
             .then(() => {
               this.$store.dispatch("fetchUserProfile");

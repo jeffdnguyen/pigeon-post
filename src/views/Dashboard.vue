@@ -1,17 +1,9 @@
 <template>
   <div id="dashboard">
-    <PostStation
-      :userProfile="userProfile"
-      :currentUser="currentUser"
-    ></PostStation>
+    <PostStation :userProfile="userProfile" :currentUser="currentUser"></PostStation>
     <div v-if="posts.length">
       <div class="feed">
-        <Post
-          v-for="post in posts"
-          :key="post.id"
-          :post="post"
-          class="post"
-        ></Post>
+        <Post v-for="post in posts" :key="post.id" :post="post" class="post"></Post>
       </div>
     </div>
     <div v-else>

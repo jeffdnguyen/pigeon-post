@@ -26,3 +26,6 @@ vue.config.js
 
 # Deploy to GitPages script
 deployGitPages.sh
+
+# Temporary/Dev only assets
+/src/assets/temp/*
