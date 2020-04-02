@@ -188,9 +188,7 @@ export default {
 .button {
   text-decoration: none;
   color: #f3f4f5;
-  background-color: rgb(243, 144, 13);
-
-  box-shadow: 3px 4px 0px 0px rgb(175, 119, 28);
+  background-color: #ff6600;
   border-radius: 28px;
 
   margin-top: 20px;

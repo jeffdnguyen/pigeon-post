@@ -6,6 +6,7 @@
         <div class="img"></div>
       </div>
       <div class="profile-content">
+        <!-- <button class="profile-button">Edit Profile</button> -->
         <div class="nickname">
           <p>{{ userProfile.name }}</p>
         </div>
@@ -61,13 +62,13 @@ export default {
       required: true
     }
   },
+  created() {
+    this.$store.dispatch("fetchUserProfile", this.profileId);
+  },
   computed: {
     ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"]),
     filteredPostsByProfile() {
-      this.$store.dispatch("fetchUserProfile", this.profileId);
-      return this.posts.filter(
-        post => post.userId === this.userProfile.username
-      );
+      return this.posts.filter(post => post.userId === this.userProfile.id);
     }
   },
   filters: {
@@ -131,7 +132,7 @@ export default {
     }
     .profile-content {
       margin: 0pt;
-      margin-top: 50pt;
+      margin-top: 10pt;
       padding: 0pt 0pt 0pt 10pt;
       // background-color: seagreen;
       border-bottom: solid 3pt #cccccc;
@@ -141,6 +142,25 @@ export default {
       justify-content: flex-end;
       align-items: flex-start;
 
+      .profile-button {
+        align-self: flex-end;
+        height: 30pt;
+        width: 80pt;
+
+        margin-right: 10pt;
+
+        background-color: #f3f4f5;
+        color: #ff6600;
+        font-weight: 800;
+
+        &:hover {
+          background-color: rgba(255, 102, 0, 0.1);
+        }
+
+        border-radius: 60pt;
+        border: solid 1pt #ff6600;
+      }
+
       .username p {
         color: #888;
         margin: 0pt 0pt 10pt 5pt;
@@ -148,7 +168,7 @@ export default {
 
       .nickname p {
         font-weight: bold;
-        margin: 10pt 0pt 0pt 0pt;
+        margin: 50pt 0pt 0pt 0pt;
       }
 
       .bio p {

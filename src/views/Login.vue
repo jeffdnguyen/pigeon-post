@@ -153,7 +153,7 @@ export default {
             .set({
               username: this.signupForm.username,
               name: this.signupForm.name,
-              bio: "Your bio is empty ):",
+              bio: "Edit your profile and write something interesting!",
               createdOn: new Date(),
               following: 0,
               followers: 0
