@@ -4,6 +4,8 @@ This is a simple web app created using `Vue` to mimic basic design and functiona
 
 The backend uses `Firebase` and `Cloud Firestore` to run a server for the application. Since this is a demo, there is cap on the number of interactions with the backend. Play nice :(
 
+Try it here: https://jeffdnguyen.github.io/pigeon-post/
+
 ## Demo
 
 ![demo](./screenshots/demo.gif "demo")
