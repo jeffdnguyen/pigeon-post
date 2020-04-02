@@ -6,8 +6,11 @@
         <div class="img"></div>
       </div>
       <div class="profile-content">
+        <div class="nickname">
+          <p>{{ userProfile.name }}</p>
+        </div>
         <div class="username">
-          <p>@{{ userProfile.name }}</p>
+          <p>@{{ userProfile.username }}</p>
         </div>
         <div class="bio">
           <p>{{ userProfile.bio }}</p>
@@ -36,8 +39,8 @@
         <Post v-for="post in filteredPostsByProfile" :key="post.id" :post="post" class="post"></Post>
       </div>
     </div>
-    <div v-else>
-      <p class="no-results">There are currently no posts</p>
+    <div class="no-results" v-else>
+      <p>You haven't posted anything yet!</p>
     </div>
   </div>
 </template>
@@ -62,7 +65,9 @@ export default {
     ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"]),
     filteredPostsByProfile() {
       this.$store.dispatch("fetchUserProfile", this.profileId);
-      return this.posts.filter(post => post.userId === this.userProfile.id);
+      return this.posts.filter(
+        post => post.userId === this.userProfile.username
+      );
     }
   },
   filters: {
@@ -136,14 +141,21 @@ export default {
       justify-content: flex-end;
       align-items: flex-start;
 
-      .username {
-        font-weight: bold;
+      .username p {
+        color: #888;
+        margin: 0pt 0pt 10pt 5pt;
       }
+
+      .nickname p {
+        font-weight: bold;
+        margin: 10pt 0pt 0pt 0pt;
+      }
+
       .bio p {
         margin: 0;
       }
       .metadata p {
-        margin: 5pt 0pt 0pt 0pt;
+        margin: 10pt 0pt 0pt 0pt;
         color: #888;
       }
       .follow-container {
@@ -156,6 +168,11 @@ export default {
         }
       }
     }
+  }
+  .no-results {
+    text-align: center;
+    width: 100%;
+    border-bottom: solid 1pt #ccc;
   }
 }
 /* Media query: Mobile devices (Using iPhone X as the standard) */

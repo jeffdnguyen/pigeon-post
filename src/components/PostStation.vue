@@ -62,7 +62,7 @@ export default {
           createdOn: new Date(),
           content: this.post.content,
           userId: this.currentUser.uid,
-          userName: this.userProfile.name,
+          userName: this.userProfile.username,
           comments: 0,
           likes: 0
         })

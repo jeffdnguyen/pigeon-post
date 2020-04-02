@@ -26,13 +26,19 @@
               Password
             </a>
             <a @click="toggleForm">
-              <span class="gray-text">Not Registered?</span>Sign Up
+              <span class="gray-text">Not Registered?</span> Sign Up
             </a>
           </div>
         </form>
         <form v-else-if="!showLoginForm && !showForgotPassword" @submit.prevent>
           <h1>Get Started</h1>
-          <input v-model.trim="signupForm.name" type="text" placeholder="name" id="name" />
+          <input
+            v-model.trim="signupForm.username"
+            type="text"
+            placeholder="username"
+            id="username"
+          />
+          <input v-model.trim="signupForm.name" type="text" placeholder="nickname" id="nickname" />
           <input v-model.trim="signupForm.email" type="text" placeholder="email" id="email2" />
           <input
             v-model.trim="signupForm.password"
@@ -43,7 +49,7 @@
           <button @click="signup" class="button">Sign Up</button>
           <div class="extras">
             <a @click="toggleForm">
-              <span class="gray-text">Already Registered?</span>Log In
+              <span class="gray-text">Already Registered?</span> Log In
             </a>
           </div>
         </form>
@@ -83,6 +89,7 @@ export default {
         password: ""
       },
       signupForm: {
+        username: "",
         name: "",
         email: "",
         password: ""
@@ -144,6 +151,7 @@ export default {
           fb.usersCollections
             .doc(user.user.uid)
             .set({
+              username: this.signupForm.username,
               name: this.signupForm.name,
               bio: "Your bio is empty ):",
               createdOn: new Date(),
@@ -242,7 +250,7 @@ export default {
 
 .login {
   margin: auto;
-  height: 50vh;
+  height: 60vh;
   width: 30vw;
 
   font-size: 16px;
