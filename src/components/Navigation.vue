@@ -4,13 +4,19 @@
       <div class="col1">
         <ul class="links">
           <li>
-            <router-link to="dashboard"
-              ><img id="logo" src="../assets/orange_pigeon.png"
-            /></router-link>
+            <router-link :to="{name:'Dashboard'}">
+              <img id="logo" src="../assets/orange_pigeon.png" />
+            </router-link>
           </li>
-          <li><router-link to="dashboard">Home</router-link></li>
-          <li><router-link to="profile">Profile</router-link></li>
-          <li><a @click="logout">Log out</a></li>
+          <li>
+            <router-link :to="{name:'Dashboard'}">Home</router-link>
+          </li>
+          <li>
+            <router-link :to="{name:'profile', params:{profileId: currentUser.uid}}">Profile</router-link>
+          </li>
+          <li>
+            <a @click="logout">Log out</a>
+          </li>
         </ul>
       </div>
     </section>
@@ -18,6 +24,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 const fb = require("../firebaseConfig.js");
 
 export default {
@@ -33,6 +41,9 @@ export default {
           console.log(err);
         });
     }
+  },
+  computed: {
+    ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"])
   }
 };
 </script>
@@ -88,15 +99,6 @@ export default {
       font-size: 11pt;
       li {
         margin: 0pt 20pt 0pt 0pt;
-        a {
-          cursor: pointer;
-          text-decoration: none;
-          color: inherit;
-
-          &:hover {
-            color: lighten(#ff6600, 5%);
-          }
-        }
       }
     }
   }

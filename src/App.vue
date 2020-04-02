@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navigation v-if="currentUser"></Navigation>
-    <router-view />
+    <router-view :key="$route.Path" />
   </div>
 </template>
 

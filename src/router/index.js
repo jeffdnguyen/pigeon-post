@@ -17,25 +17,29 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: lazyLoad("Home")
+    component: lazyLoad("Home"),
+    props: true
   },
   {
     path: "/login",
     name: "Login",
-    component: lazyLoad("Login")
+    component: lazyLoad("Login"),
+    props: true
   },
   {
     path: "/dashboard",
     name: "Dashboard",
     component: lazyLoad("Dashboard"),
+    props: true,
     meta: {
       requiresAuth: true
     }
   },
   {
-    path: "/profile",
+    path: "/profile/:profileId",
     name: "profile",
     component: lazyLoad("Profile"),
+    props: true,
     meta: {
       requiresAuth: true
     }
@@ -44,7 +48,6 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
   routes
 });
 
@@ -52,6 +55,9 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
   const currentUser = firebase.auth().currentUser;
 
+  //Fetch correct profile
+
+  // Redirect based on auth status
   if (requiresAuth && !currentUser) {
     next("/login");
   } else if (requiresAuth && currentUser) {

@@ -8,7 +8,7 @@ Vue.use(Vuex);
 fb.auth.onAuthStateChanged(user => {
   if (user) {
     store.commit("setCurrentUser", user);
-    store.dispatch("fetchUserProfile");
+    store.dispatch("fetchUserProfile", user);
 
     // UPDATE USER PROFILE
     // fb.usersCollections.doc(user.uid).onSnapshot(doc => {
@@ -42,12 +42,20 @@ export const store = new Vuex.Store({
       context.commit("setUserProfile", {});
       context.commit("setPosts", null);
     },
-    fetchUserProfile(context) {
+    fetchUserProfile(context, data) {
+      let currentUser;
+      if (typeof data == "object") {
+        currentUser = data.uid;
+      } else {
+        currentUser = data;
+      }
       fb.usersCollections
-        .doc(context.state.currentUser.uid)
+        .doc(currentUser)
         .get()
         .then(result => {
-          context.commit("setUserProfile", result.data());
+          let profile = result.data();
+          profile.id = result.id;
+          context.commit("setUserProfile", profile); //result.data()
         })
         .catch(err => {
           console.log(err);

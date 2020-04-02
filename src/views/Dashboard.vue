@@ -1,9 +1,9 @@
 <template>
   <div id="dashboard">
     <PostStation :userProfile="userProfile" :currentUser="currentUser"></PostStation>
-    <div v-if="posts.length">
+    <div v-if="filteredPostsByFollowers.length">
       <div class="feed">
-        <Post v-for="post in posts" :key="post.id" :post="post" class="post"></Post>
+        <Post v-for="post in filteredPostsByFollowers" :key="post.id" :post="post" class="post"></Post>
       </div>
     </div>
     <div v-else>
@@ -23,7 +23,11 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"])
+    ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"]),
+    filteredPostsByFollowers() {
+      this.$store.dispatch("fetchUserProfile", this.currentUser.uid);
+      return this.posts;
+    }
   },
   components: {
     PostStation,

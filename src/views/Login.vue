@@ -145,13 +145,13 @@ export default {
             .doc(user.user.uid)
             .set({
               name: this.signupForm.name,
-              bio: "",
+              bio: "Your bio is empty ):",
               createdOn: new Date(),
               following: 0,
               followers: 0
             })
             .then(() => {
-              this.$store.dispatch("fetchUserProfile");
+              this.$store.dispatch("fetchUserProfile", user.user);
               this.performingRequest = false;
               this.$router.push("/dashboard");
             })
@@ -177,7 +177,7 @@ export default {
         )
         .then(user => {
           this.$store.commit("setCurrentUser", user.user);
-          this.$store.dispatch("fetchUserProfile");
+          this.$store.dispatch("fetchUserProfile", user.user);
           this.$router.push("/dashboard");
         })
         .catch(err => {

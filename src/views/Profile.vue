@@ -7,39 +7,33 @@
       </div>
       <div class="profile-content">
         <div class="username">
-          <p>@{{ profile.userName }}</p>
+          <p>@{{ userProfile.name }}</p>
         </div>
         <div class="bio">
-          <p>{{ profile.bio }}</p>
+          <p>{{ userProfile.bio }}</p>
         </div>
         <div class="metadata">
           <div class="createdOn">
-            <p>Joined {{ profile.createdOn }}</p>
+            <p>Joined {{ userProfile.createdOn | formatDate }}</p>
           </div>
         </div>
         <div class="follow-container">
           <div class="following">
             <p>
-              <span>{{ profile.following }}</span> Following
+              <span>{{ userProfile.following }}</span> Following
             </p>
           </div>
           <div class="followers">
             <p>
-              <span>{{ profile.followers }}</span> Followers
+              <span>{{ userProfile.followers }}</span> Followers
             </p>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="posts.length">
+    <div v-if="filteredPostsByProfile.length">
       <div class="feed">
-        <Post
-          v-for="post in posts"
-          :key="post.id"
-          :post="post"
-          :filterByOwner="filterByOwner"
-          class="post"
-        ></Post>
+        <Post v-for="post in filteredPostsByProfile" :key="post.id" :post="post" class="post"></Post>
       </div>
     </div>
     <div v-else>
@@ -52,21 +46,33 @@
 import { mapState } from "vuex";
 import Post from "@/components/Post.vue";
 
+import moment from "moment";
+
 export default {
   data() {
-    return {
-      profile: {
-        userName: "jeff",
-        bio: "ncsu: 2020 insta: @jeff.noway",
-        createdOn: "May 2015",
-        following: 231,
-        followers: 222
-      },
-      filterByOwner: ""
-    };
+    return {};
+  },
+  props: {
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   computed: {
-    ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"])
+    ...mapState(["userProfile", "currentUser", "posts", "hiddenPosts"]),
+    filteredPostsByProfile() {
+      this.$store.dispatch("fetchUserProfile", this.profileId);
+      return this.posts.filter(post => post.userId === this.userProfile.id);
+    }
+  },
+  filters: {
+    formatDate(val) {
+      if (!val) {
+        return "-";
+      }
+      let date = val.toDate();
+      return moment(date).format("MMMM YYYY");
+    }
   },
   components: {
     Post
@@ -97,7 +103,7 @@ export default {
 
       height: 150pt;
 
-      background-color: rgba(137, 65, 165, 0.822);
+      background-color: rgba(224, 89, 10, 0.822);
     }
     .profile-pic {
       position: absolute;
@@ -105,7 +111,7 @@ export default {
       .img {
         margin-left: 10pt;
 
-        background-image: url("../assets/temp/jeff_profile_pic.jpeg");
+        background-image: url("../assets/orange_pigeon.png");
         background-color: rgb(235, 208, 88);
         background-position: center;
         background-repeat: no-repeat;

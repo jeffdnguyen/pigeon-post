@@ -6,7 +6,9 @@
     <div class="content">
       <div class="header">
         <div class="name">
-          <p>@{{ post.userName | trimNameLength }}</p>
+          <p>
+            <a @click="visitProfile(post.userId)">@{{ post.userName | trimNameLength }}</a>
+          </p>
         </div>
         <div class="time">
           <p>{{ post.createdOn | formatDate }}</p>
@@ -28,11 +30,12 @@ export default {
     post: {
       type: Object,
       required: true
-    },
-    // Filter by UID
-    filterByOwner: {
-      type: String,
-      required: false
+    }
+  },
+  methods: {
+    visitProfile(userId) {
+      this.$store.dispatch("fetchUserProfile", userId);
+      this.$router.push({ name: "profile", params: { profileId: userId } });
     }
   },
   filters: {
@@ -59,7 +62,7 @@ export default {
   margin: 0pt;
 
   // background-color: blue;
-  border-top: solid 1pt #cccccc;
+  border-bottom: solid 1pt #cccccc;
   border-right: solid 1pt #cccccc;
 
   width: 70vw;
@@ -108,6 +111,16 @@ export default {
       p {
         margin: 0;
         padding: 0;
+      }
+
+      a {
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: lighten(#ff6600, 5%);
+        }
       }
     }
     .body {
