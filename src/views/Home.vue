@@ -30,7 +30,7 @@
         <p>
           With Pigeon Post, your messages will take 3-7 days to safely and
           securely arrive. With the latest innovation in bird tech, we are able
-          to deliver messages up to 75g(2.5oz) anywhere around the while, all
+          to deliver messages up to 75g(2.5oz) anywhere around the world, all
           while remaining completely immune to cyber attacks
         </p>
         <p>
